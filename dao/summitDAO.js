@@ -40,5 +40,22 @@ export default class summitDAO {
     }
   }
 
+  async getDetails(sports) {
+    try {
+      // Find the details of the sport
+      const details = await cluster0.collection(`register_${sports}`).find().toArray();
+      if (!details) {
+        console.log("Unable to find details");
+        return false
+      }
+      console.log(details)
+      return details;
+    } catch (e) {
+      // Log any errors that occur during insertion
+      console.error(`Unable to find details: ${e}`);
+      return { error: e };
+    }
+  }
+
  
 }

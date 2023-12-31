@@ -7,4 +7,6 @@ const router = express.Router();
 
 router.route("/register").post(summitCtrl.apiRegister);
 
+router.route("/sport-details").post(summitCtrl.apiGetDetails)
+
 export default router;
