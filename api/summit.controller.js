@@ -10,8 +10,6 @@ export default class summitController {
   static async apiRegister(req, res) {
     try{
       const details = req.body
-
-      console.log(details);  
       const register = await dao.register(details);
       if (register.status == "success"){
         const sendMail = await sendEmail(details);
