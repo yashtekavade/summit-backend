@@ -14,13 +14,17 @@ export default class summitController {
       console.log(details);  
       const register = await dao.register(details);
       if (register.status == "success"){
-        const sendMail = await sendEmail(details);
-        if (sendMail){
-          res.json({message: "success", mail: "success"});
-        }else{
-          res.json({mail:"failure"});
+        try {
+          const sendMail = await sendEmail(details);
+          if (sendMail){
+            res.json({message: "success", mail: "success"});
+          }else{
+            res.json({message: "success", mail:"failure"});
+          }
+        } catch (mailError) {
+          console.error(`Failed to send mail: ${mailError}`);
+          res.json({message: "success", mail:"failure"});
         }
-        // res.json({message: "success"});
       }else{
         res.json({message: "failure"});
       }
