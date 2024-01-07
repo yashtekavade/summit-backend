@@ -1,3 +1,5 @@
+// Import necessary modules
+import { ObjectId } from "mongodb";
 // Declare a variable to hold the database connection
 let cluster0;
 
@@ -24,6 +26,7 @@ export default class summitDAO {
     try {
       // Insert the registration details into the database
       let sportsSelection = result.sportsConfirm
+
       const status = await cluster0.collection(`register_${sportsSelection}`).insertOne(result);
       if (status.insertedCount === 0) {
         throw new Error("Unable to register");
