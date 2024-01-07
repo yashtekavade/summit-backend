@@ -12,7 +12,7 @@ export default async function sendEmail(mail) {
     Messages: [
       {
         From: {
-          Email: "thenyyxxii@gmail.com",
+          Email: "theneymarxx@gmail.com",
           Name: "MIT-WPU SUMMIT'24",
         },
         To: [
